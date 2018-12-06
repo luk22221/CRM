@@ -36,7 +36,7 @@ try
 		}
 		
 		$pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-		if ($connect->query("INSERT INTO users (id, user, pass,  email, datetime,privilege) VALUES (NULL, '$user', '$pass_hash', 'new_user',NOW(),'0' );"))
+		if ($connect->query("INSERT INTO users (id, user, pass,  email, datetime,privilege) VALUES (NULL, '$user', '$pass_hash', '0',NOW(),'0' );"))
 		{
 			echo "Nowy użytkownik został dodany jego dane do logowania są następujące:" . '<br/>';
 		}
@@ -52,8 +52,9 @@ try
 }
 catch(Exception $e)
 {
-	echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+	?><div class="error">Błąd serwera dodaj użytkownika w innym terminie</div>
 	//echo '<br />Informacja developerska: '.$e;
+<?php
 }
 
 echo($user) . '<br/>';

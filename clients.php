@@ -15,8 +15,32 @@ include "include/nav.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<a href="add_client.php"><button type="button">Dodaj nowego klienta</button></a></br>
+<a href="new_client.php"><button type="button">Dodaj nowego klienta</button></a></br>
 <?php
+if (isset($_SESSION['client_added']))
+    {?>
+        Klient został dodany do bazy
+    <?php
+    }
+    unset($_SESSION['client_added']);
+    //Usuwanie zmiennych pamiętających wartości wpisane do formularza
+    if (isset($_SESSION['fr_name'])) unset($_SESSION['fr_name']);
+    if (isset($_SESSION['fr_last_name'])) unset($_SESSION['fr_last_name']);
+    if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+    if (isset($_SESSION['fr_phone'])) unset($_SESSION['fr_phone']);
+    if (isset($_SESSION['fr_postal_code'])) unset($_SESSION['fr_postal_code']);
+    if (isset($_SESSION['fr_town'])) unset($_SESSION['fr_town']);
+    if (isset($_SESSION['fr_street'])) unset($_SESSION['fr_street']);
+    if (isset($_SESSION['fr_description'])) unset($_SESSION['fr_description']);
+    
+    //Usuwanie błędów rejestracji
+    if (isset($_SESSION['e_name'])) unset($_SESSION['e_name']);
+    if (isset($_SESSION['e_last_name'])) unset($_SESSION['e_last_name']);
+    if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+    if (isset($_SESSION['e_phone'])) unset($_SESSION['e_phone']);
+    if (isset($_SESSION['e_postal_code'])) unset($_SESSION['e_postal_code']);
+
+
 $records_per_page = 3;
 
 if($result = $connect->query("SELECT id, name, last_name FROM clients ")){

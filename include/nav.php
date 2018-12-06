@@ -11,6 +11,7 @@
 			<ul>
 				<li><a href="../index.php">Strona główna</a></li>
 				<li><a href="../clients.php">Klienci</a></li>
+				<li><a href="../tasks.php">Zadania</a></li>
 				<?php if (($_SESSION['privilege'])== 1) {?>
 					<li><a href="../admin/management.php">Zarządzaj użytkownikami</a></li>
 				<?php } ?>

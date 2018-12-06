@@ -10,7 +10,6 @@ if ((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
 
 require_once "connect.php";
 mysqli_report(MYSQLI_REPORT_STRICT);
-
 try
 {
 	$connect = new mysqli($host, $db_user, $db_password, $db_name);
@@ -62,7 +61,7 @@ try
 			}
 			
 		}else{
-			throw new Expection($connect->error);
+			throw new Exception($connect->error);
 		}
 		
 		$connect->close();
@@ -70,7 +69,8 @@ try
 }
 catch(Exception $e)
 {
-	echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o wizytę w innym terminie!</span>';
+		?><div class="error">Błąd serwera dodaj użytkownika w innym terminie</div>
+		<?php
 	//echo '<br />Informacja developerska: '.$e;
 }
 	
